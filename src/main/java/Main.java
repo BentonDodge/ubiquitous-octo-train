@@ -12,5 +12,6 @@ public class Main extends MemberEncyclopedia {
     public static void main(String[] args) {
         JDA jda = JDABuilder.createDefault("MTA1MDI0MTQ1MTY3NTYzNTc0Mw.GeXOLa.poA_k437aUNxzZz7APuQyaqsVthoqsT8rJk_AI").build();
         Bot.Bot();
+        jda.addEventListener(new CoinExchange());
     }
 }

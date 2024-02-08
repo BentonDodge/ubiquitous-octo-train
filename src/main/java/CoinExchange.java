@@ -11,16 +11,11 @@ public class CoinExchange extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         User author = event.getAuthor();
-        Message message = event.getMessage();
-        if (author.getIdLong() == this.user.getIdLong()) {
-            // Update user from message instance (likely more up-to-date)
-            this.user = author;
-            // Print the message of the user
-            System.out.println(author.getAsTag() + ": " + message.getContentDisplay());
+        Message message1 = event.getMessage();
+        String message = event.getMessage().getContentRaw();
+        if (message.equals("Ping")) {
+            event.getChannel().sendMessage("Pong").queue();
         }
     }
-//    public void onCoinEmojiSent(){
-//
-//    }
-
 }
+
