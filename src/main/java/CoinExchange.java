@@ -7,14 +7,19 @@ import net.dv8tion.jda.api.events.guild.GenericGuildEvent;
 public class CoinExchange extends ListenerAdapter {
 
     private User user;
+    public int[] memberCash;
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         User author = event.getAuthor();
         Message message1 = event.getMessage();
         String message = event.getMessage().getContentRaw();
-        if (message.equals("Ping")) {
-            event.getChannel().sendMessage("Pong").queue();
+        String cobCoin = "<:CobCoin:1050270865813680208>";
+        if(message.contains(cobCoin)){
+            if(message.contains("@")) {
+                //if()
+                event.getChannel().sendMessage("THX ;) " + author.getName()).queue();
+            }
         }
     }
 }
