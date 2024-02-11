@@ -7,7 +7,9 @@ public class Main extends MemberEncyclopedia {
     public static void main(String[] args) {
         JDA jda = JDABuilder.createLight("MTA1MDI0MTQ1MTY3NTYzNTc0Mw.GeXOLa.poA_k437aUNxzZz7APuQyaqsVthoqsT8rJk_AI", GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MEMBERS)
                 .addEventListeners(new Listeners())
+
                 .build();
+
 
     }
 }
