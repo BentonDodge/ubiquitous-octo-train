@@ -4,12 +4,18 @@ import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import java.awt.*;
+import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static java.lang.Integer.parseInt;
+
 public class Listeners extends ListenerAdapter {
-    public static ArrayList<String> Cash = new ArrayList<String>();
+    public static ArrayList<String> Cash = new ArrayList<>();
+
     private User user;
     private EmbedBuilder embedBuilder = new EmbedBuilder();
 
@@ -29,15 +35,29 @@ public class Listeners extends ListenerAdapter {
         }
         if (message.contains("ShutDown")){
             event.getChannel().sendMessage("LeaderBoard:").queue();
+            embedBuilder.setTitle("LeaderBoard:",null);
+            embedBuilder.setDescription("Sent Whenever Bot stops");
+            embedBuilder.setColor(Color.DARK_GRAY);
+            MemberEncyclopedia.MemberList();
+            Boolean LeaderBoardinline=true;
             for(int i = 0; i<Cash.size();i++){
+                LeaderBoardinline=!LeaderBoardinline;
                 event.getChannel().sendMessage(Cash.get(i)).queue();
+                String[] x = Cash.get(i).split(": ");
+                embedBuilder.addField("User", x[0],LeaderBoardinline);
+                embedBuilder.addField("Cash",x[1],false);
+                System.out.println(Arrays.toString(x));
+                int y = parseInt(x[1]);
+
             }
+            event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
             try {
-                TimeUnit.SECONDS.sleep(2);
+                TimeUnit.SECONDS.sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
             System.exit(0);
+
         }
     }
     public void onMemberJoin(GuildMemberJoinEvent event){
