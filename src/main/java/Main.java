@@ -7,7 +7,7 @@ import java.io.*;
 public class Main{
 public static String memberDataString;
     public static void main(String[] args) {
-        File memberDatabase = new File("..\\ubiquitous-octo-train\\src\\main\\java\\Resources\\MemberDatabase");
+        File memberDatabase = new File("..\\src\\main\\java\\Resources\\MemberDatabase");
         BufferedReader br;
         try {
             br = new BufferedReader(new FileReader(memberDatabase));
