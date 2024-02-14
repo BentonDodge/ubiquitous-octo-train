@@ -24,8 +24,8 @@ public class Listeners extends ListenerAdapter {
         User author = event.getAuthor();
         Message message1 = event.getMessage();
         String message = event.getMessage().getContentRaw();
-        if(message.contains("BlackJack")){
-            embedBuilder.setTitle("BlackJack");
+        if(message.contains("!BlackJack")){
+            blackJack.setTitle("BlackJack",null);
         }
         if(message.contains(Container.cobCoins)){
             if(message.contains("@")) {
@@ -33,7 +33,7 @@ public class Listeners extends ListenerAdapter {
                 Cash.add("howdy");
             }
         }
-        if (message.contains("ShutDown")){
+        if (message.contains("$ShutDown")){
             EmbedBuilder embedBuilder = new EmbedBuilder();
             event.getChannel().sendMessage("LeaderBoard:").queue();
             embedBuilder.setTitle("LeaderBoard:",null);
@@ -58,7 +58,6 @@ public class Listeners extends ListenerAdapter {
                 throw new RuntimeException(e);
             }
             System.exit(0);
-
         }
     }
     public void onMemberJoin(GuildMemberJoinEvent event){
@@ -70,7 +69,6 @@ public class Listeners extends ListenerAdapter {
             Cash.add(memberName + memberCash);
             Role role = guild.getRoleById("1047945240100732958");
             guild.addRoleToMember(member, role).queue();
-
         }
     }
 }
