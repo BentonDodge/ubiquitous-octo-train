@@ -17,10 +17,10 @@ public class Listeners extends ListenerAdapter {
     public static ArrayList<String> Cash = new ArrayList<>();
 
     private User user;
-    private EmbedBuilder embedBuilder = new EmbedBuilder();
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
+        EmbedBuilder blackJack = new EmbedBuilder():
         User author = event.getAuthor();
         Message message1 = event.getMessage();
         String message = event.getMessage().getContentRaw();
@@ -34,6 +34,7 @@ public class Listeners extends ListenerAdapter {
             }
         }
         if (message.contains("ShutDown")){
+            EmbedBuilder embedBuilder = new EmbedBuilder();
             event.getChannel().sendMessage("LeaderBoard:").queue();
             embedBuilder.setTitle("LeaderBoard:",null);
             embedBuilder.setDescription("Sent Whenever Bot stops");
@@ -45,10 +46,10 @@ public class Listeners extends ListenerAdapter {
                 event.getChannel().sendMessage(Cash.get(i)).queue();
                 String[] x = Cash.get(i).split(": ");
                 embedBuilder.addField("User", x[0],LeaderBoardinline);
-                embedBuilder.addField("Cash",x[1],false);
+                embedBuilder.addField("Cash",x[1],!LeaderBoardinLine);
                 System.out.println(Arrays.toString(x));
                 int y = parseInt(x[1]);
-
+                memberDatabase.write(x[0]+": "+x[1]+"\n");//TODO bug this
             }
             event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
             try {
@@ -68,7 +69,6 @@ public class Listeners extends ListenerAdapter {
         if (!event.getUser().isBot()){
             Cash.add(memberName + memberCash);
             Role role = guild.getRoleById("1047945240100732958");
-
             guild.addRoleToMember(member, role).queue();
 
         }
