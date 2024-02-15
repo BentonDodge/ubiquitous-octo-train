@@ -8,9 +8,10 @@ Commands:
   Technical Commands:
     "!ShutDown"-Turns the bot off and posts the leaderboard to the server
     "!"YearlyMutiplier"-Once followed by "True" or "False" it will toggle if yearly multiplier is active(NOTE: IT WILL RESET EVERYONE'S MULTIPLIER)
-    "!"
   Game Commands:
-    "$"
+    "$CloseGames"-stops all games
+    "$BlackJack"-Starts a game of Black Jack
+    
 
 Current Java to Discord API:
 https://github.com/discord-jda/JDA?tab=readme-ov-file
